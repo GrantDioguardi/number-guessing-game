@@ -1,17 +1,27 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class UserInput {
 
 	private Scanner keyboard = new Scanner(System.in);
 	
-	public int inputInteger(String input) {
+	public int inputInteger() {
+		int integer = 0;
 		
-		// TODO Take user input and prevent non integer values.
+		boolean invalidInput = true;
+		do {
+			try {
+				integer = Integer.valueOf(keyboard.nextLine());
+				invalidInput = false;
+			} catch (InputMismatchException ime) {
+				System.out.println("Invalid input: Only enter integer values.");
+			}
+		} while (invalidInput);
 		
-		return 0;
+		return integer;
 	}
 	
-	public String inputString(String input) {
+	public String inputString() {
 		
 		// TODO Take user input.
 		
